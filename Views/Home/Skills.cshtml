@@ -1,0 +1,121 @@
+﻿@*Body*@
+@{
+    var Hskills = @Model[0].HSkills.Split(',');
+    var Sskills = @Model[0].SSkills.Split(',');
+}
+
+<style>
+    .container h2 {
+        background-color: #146c43;
+        border-radius: 30px;
+        padding: 13px 30px;
+        font-weight: bold;
+        font-size: 28px;
+        width: 240px;
+        margin: 8px auto;
+        color: white;
+        transition: 0.3s;
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .box h4 {
+            background-color: #329768;
+            border-radius: 30px;
+            padding: 13px 30px;
+            font-weight: bold;
+            font-size: 24px;
+            width: 250px;
+            margin: 30px auto;
+            color: white;
+            transition: 0.3s;
+        }
+
+            .box h4:hover, h2:hover {
+                width: 100%;
+                background-color: #1e8e5d;
+            }
+
+    table {
+        text-align: center;
+        margin: 15px 8px;
+        width: 80%;
+        border-collapse: collapse;
+        color:black;
+    }
+
+        table tr th {
+            font-size: 24px;
+            color: white;
+            background-color: #146c43;
+            padding: 12px;
+            border: 2px solid #146c43;
+        }
+
+        table tr td {
+            font-size: 18px;
+            padding: 12px;
+            border: 2px solid #329768;
+            transition: 0.3s;
+            cursor: pointer;
+            background-color: #cfe6d6;
+        }
+
+            table tr td:hover {
+                background-color: #d1f0e0;
+                color: #146c43;
+            }
+
+    /* Colors for different skill categories */
+  
+</style>
+
+<div class="container">
+    <div class="box">
+        <!-- Technical Skills Column -->
+        <div class="col-md-9">
+            <h4 class="text-center">Technical Skills</h4>
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>Backend</th>
+                        <th>Frontend</th>
+                    </tr>
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        <tr>
+                            <td>@Hskills[i]</td>
+                            <td>@Hskills[i + 6]</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <!-- Soft Skills Column -->
+        <div class="col-md-9">
+            <h4 class="text-center">Soft Skills</h4>
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>Social</th>
+                        <th>Personal</th>
+                    </tr>
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        <tr>
+                            <td>@Sskills[i]</td>
+                            <td>@Sskills[i + 2]</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using MVC_EX_1.Models
+
+@*Body*@
+
+<style>
+    .left-content {
+        height: 100vh; /* Full height of the screen */
+        display: flex;
+        align-items: center; /* Vertically center the content */
+        padding-left: 50px; /* Adjust spacing from the left side */
+    }
+
+    .left-content h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .left-content p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .left-content .btn {
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 10px 30px;
+        width: fit-content;
+    }
+
+    .Two-Buttons{
+        display:flex;
+        flex-wrap:wrap;
+        justify-items:center;
+        justify-content:space-evenly;
+    }
+
+    @@media (max-width: 600px) {
+        .left-content {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .Two-Buttons a {
+          margin:5px;
+        }
+
+        .left-content h1 {
+            font-size: 1.9rem;
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left-aligned content -->
+        <div class="col-lg-10 left-content">
+            <div>
+                <p>Hello Everyone...</p>
+                <h1>I'M @Model[0].Name</h1>
+                <p>@Model[0].Title</p>
+                <div class="Two-Buttons">
+                    <a asp-action="About" class="btn btn-success ">About</a>
+                    <!-- Download Resume Button -->
+                    <a asp-action="DownloadResume" class="btn btn-primary ">Download My Resume</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

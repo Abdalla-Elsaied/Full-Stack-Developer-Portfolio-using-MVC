@@ -1,0 +1,242 @@
+﻿@{
+    ViewData["Title"] = "ContactMe";
+}
+
+@model Client
+
+<style>
+    /* Background and center alignment */
+        .page {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Main form container */
+        .form {
+            background-color: #fff;
+            flex-basis:500px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .form:hover {
+            transform: scale(1.02);
+        }
+
+        /* Form header */
+        h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Label styling */
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        /* Input styling */
+        .input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 5px rgba(118, 75, 162, 0.3);
+        }
+
+        /* Textarea styling */
+        textarea.input {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Error message styling */
+        .text-danger {
+            color: #e74c3c;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        /* Submit button styling */
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #667eea;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a6de0;
+            transform: scale(1.03);
+        }
+
+        /* Responsive design */
+    @@media (max-width: 500px) {
+            .form {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+@*footer*@
+/* Info Section Styling */
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    background-color: #222;
+    color: #eee;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.info-left {
+    max-width: 45%;
+}
+
+.info-left h2 {
+    font-size: 2.5rem;
+    color:#0dcaf0;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content:space-evenly;
+    align-items:center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.social-icon {
+    color: #eee;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icon.face:hover {
+    color: #1877f2; /* Customize the hover color */
+}.social-icon.linked:hover {
+    color: #0a66c2; /* Customize the hover color */
+}.social-icon.git:hover {
+    color: #db4437; /* Customize the hover color */
+}
+
+.info-left p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.info-right {
+    max-width: 50%;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.contact-info i {
+    color: #1da1f2;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+@@media(max-width:589px)
+{
+        .info-section {
+            flex-direction:column;
+        }
+        .info-left,.info-right  {
+        max-width:100%;
+        margin:10px 0 ;
+    }
+
+
+}
+</style>
+<div class="page">
+
+    <div class="form">
+        <div class="content">
+            <h2>Contact Me</h2>
+
+            <!-- Display summary of validation errors -->
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <form asp-action="ContactMe" method="post">
+                <label class="form-label">Name</label>
+                <input asp-for="Name" class="input" type="text" placeholder="Your Name" />
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                <label class="form-label">Email</label>
+                <input asp-for="Email" class="input" type="email" placeholder="Your Email" />
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                <label class="form-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="input" type="text" placeholder="Your Phone" />
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+
+                <label class="form-label">Information</label>
+                <textarea asp-for="Description" class="input" placeholder="Tell Us About Your Needs"></textarea>
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                <button class="btn btn-primary" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="info-section">
+    <div class="info-left">
+        <h2>Social Media </h2>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/abdallah-elsaied-3a4972248/" target="_blank" class="social-icon linked"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Abdalla-Elsaied" target="_blank" class="social-icon git"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/abdo.elsaied.79" target="_blank" class="social-icon face"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+
+    <div class="info-right">
+        <ul class="contact-info">
+            <li><i class="fas fa-map-marker-alt"></i> Egypt, Gharbeia, Tanta</li>
+            <li><i class="fas fa-clock"></i> Business Hours: From 18:00 to 24:00</li>
+            <li><i class="fas fa-phone"></i> +201149444858</li>
+           
+        </ul>
+    </div>
+</div>
